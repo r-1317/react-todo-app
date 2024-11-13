@@ -5,7 +5,7 @@ import TodoItem from "./TodoItem"; // ◀◀ 追加
 type Props = {
   todos: Todo[];
   updateIsDone: (id: string, value: boolean) => void;
-  remove: (id: string) => void;
+  // remove: (id: string) => void;
 };
 
 const TodoList = (props: Props) => {
@@ -25,7 +25,7 @@ const TodoList = (props: Props) => {
         <TodoItem
           key={todo.id}
           todo={todo}
-          remove={props.remove}
+          // remove={props.remove}
           updateIsDone={props.updateIsDone}
         />
       ))}
