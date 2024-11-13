@@ -1,13 +1,14 @@
 import React from "react";
 import { Todo } from "./types";
-import dayjs from "dayjs";
+import TodoItem from "./TodoItem"; // ◀◀ 追加
 
 type Props = {
   todos: Todo[];
+  updateIsDone: (id: string, value: boolean) => void;
+  remove: (id: string) => void;
 };
 
 const TodoList = (props: Props) => {
-  // const todos = [...props.todos].sort((a, b) => a.priority - b.priority);
   const todos = props.todos;
 
   if (todos.length === 0) {
@@ -19,21 +20,14 @@ const TodoList = (props: Props) => {
   }
 
   return (
-    <div className="space-y-1">
+    <div className="space-y-2">
       {todos.map((todo) => (
-        <div key={todo.id}>
-          <span className="text-gray-500">{todo.isDone ? "【完了】" : ""}</span>{" "}
-          <strong>{todo.name}</strong>{" "}
-          {todo.deadline && (
-            <span>
-              期限: {dayjs(todo.deadline).format("YYYY年MM月DD日-hh:mm")}
-            </span>
-          )}
-          <span className="text-gray-500">優先度:</span>{" "}
-          <span className="text-yellow-500">
-            {"★".repeat(4 - todo.priority)}
-          </span>
-        </div>
+        <TodoItem
+          key={todo.id}
+          todo={todo}
+          remove={props.remove}
+          updateIsDone={props.updateIsDone}
+        />
       ))}
     </div>
   );
