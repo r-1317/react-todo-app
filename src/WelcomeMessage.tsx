@@ -11,14 +11,14 @@ type Props = {
 // 関数コンポーネントはパスカルケースで名前を設定します。
 const WelcomeMessage = (props: Props) => {
   // いわゆる普通のロジックを記述する
-  const currentTime = new Date();
-  const greeting =
-    currentTime.getHours() < 12 ? "おはようございます" : "こんにちは";
+  // const currentTime = new Date();
+  // const greeting =
+  //   currentTime.getHours() < 12 ? "おはようございます" : "こんにちは";
 
   //【重要!】JSX構文で描いた「JSX要素」を return で返す
   return (
     <div className="text-blue-700">
-      {greeting}、{props.name}さん。現在の未完了タスクは{props.uncompletedCount}
+      現在の未完了タスクは{props.uncompletedCount}
       個です。
     </div>
   );
